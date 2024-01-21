@@ -6,8 +6,7 @@ function divide() {
         result[index] = item / 4;
     });
 
-    const div = document.getElementById('divide');
-    div.innerHTML = result
+    writeDOM('divide', result);
 }
 
 function prime() {
@@ -22,8 +21,7 @@ function prime() {
         }
     })
 
-    const div = document.getElementById('prime');
-    div.innerHTML = result
+    writeDOM('prime', result);
 }
 
 function check(variable) {
@@ -47,9 +45,7 @@ function odd() {
         }
     });
 
-    const div = document.getElementById('odd');
-    div.innerHTML = result
-
+    writeDOM('odd', result);
 }
 
 function pattern() {
@@ -59,23 +55,29 @@ function pattern() {
      * 1 1 0 1
      * 1 1 1 0
      */
-    let array = [[]];
-    for (let i = 0; i <= 4; i++) {
-        array[i] = 0;
-        for (let j = 0; j <= 4; j++) {
+    const div = document.getElementById('pattern');
+    let array = [];
+    for (let i = 0; i < 4; i++) {
+        array[i] = [];
+        for (let j = 0; j < 4; j++) {
             if (i === j) {
                 array[i][j] = '0';
             } else {
                 array[i][j] = '1';
             }
         }
-    }
 
-    console.log(array)
-    const div = document.getElementById('pattern');
-    div.innerHTML = array
+        let element = document.createElement("p");
+        element.innerHTML = array[i];
+        div.appendChild(element)
+    }
 }
 
+
+function writeDOM(tag, result){
+    const div = document.getElementById(tag);
+    div.innerHTML = result
+}
 
 
 function getResult() {
