@@ -74,9 +74,52 @@ function pattern() {
 }
 
 
-function writeDOM(tag, result){
+function writeDOM(tag, result) {
     const div = document.getElementById(tag);
     div.innerHTML = result
+}
+
+function createElement(tag, result) {
+    let element = document.createElement("p");
+    element.innerHTML = result;
+    const div = document.getElementById(tag);
+    div.appendChild(element)
+}
+
+const pyramid = () => {
+    const height = 7;
+
+    for (var i = 1; i < height; i++) {
+        let string = '';
+        
+        for (var j = 1; j < height - i; j++) {
+            string += ' ';
+        }
+
+        for (var j = 1; j <= 2 * i - 1; j++) {
+            string += '*';
+        }
+        createElement('pyramid', string);
+    }
+}
+
+const rectangle = () => {
+    const height = 5;
+    const width = 10;
+
+    for (var i = 0; i < height; i++) {
+        let string = '';
+
+        for (var j = 0; j < width; j++) {
+            if (i == 0 || i == (height - 1) || j == 0 || j == (width - 1)) {
+                string += '*';
+            } else {
+                string += '_';
+            }
+
+        }
+        createElement('rectangle', string)
+    }
 }
 
 
@@ -85,4 +128,6 @@ function getResult() {
     prime();
     odd();
     pattern();
+    pyramid();
+    rectangle();
 }
